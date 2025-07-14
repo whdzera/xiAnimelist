@@ -1,7 +1,7 @@
 {
-  "name": "jekyll-template-starter",
+  "name": "xianimelist",
   "version": "1.0.0",
-  "description": "Boilerplate for Jekyll projects with Vite, Tailwind CSS and Stimulus JS",
+  "description": "Animelist with Tailwind CSS and Stimulus using jikan moe APIs",
   "author": "whdzera",
   "license": "MIT",
   "dependencies": {
