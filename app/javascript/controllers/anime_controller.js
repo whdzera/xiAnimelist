@@ -225,7 +225,7 @@ export default class AnimeController extends Controller {
       <div class="lg:w-2/3">
         <h2 class="text-4xl font-bold text-white mb-4">${anime.title}</h2>
         <div class="flex items-center gap-4 mb-6">
-          <span class="bg-yellow-500 text-black px-4 py-2 rounded-full font-bold">⭐ ${rating}</span>
+          <span class="bg-orange-500 text-black px-4 py-2 rounded-full font-bold">⭐ ${rating}</span>
           <span class="status-badge px-4 py-2 rounded-full text-white ${this.getStatusColor(
             anime.status
           )}">${anime.status}</span>

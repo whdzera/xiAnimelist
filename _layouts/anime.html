@@ -3,32 +3,32 @@ layout: default
 ---
 
 <!-- Header -->
-<header class="relative z-10 p-6">
+<header class="relative z-10 p-4 sm:p-6">
   <div class="max-w-7xl mx-auto">
-    <div class="text-center mb-8">
+    <div class="text-center mb-6 sm:mb-8">
       <h1
-        class="text-6xl font-bold text-white dark:text-gray-100 mb-4 tracking-tight"
+        class="text-4xl sm:text-6xl font-bold text-white dark:text-gray-100 mb-3 sm:mb-4 tracking-tight"
       >
         <span
-          class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent"
+          class="bg-gradient-to-r from-yellow-300 to-orange-500 dark:from-yellow-700 dark:to-orange-800 dark:bg-clip-text bg-clip-text text-transparent"
         >
           xiAnimeList
         </span>
       </h1>
       <p
-        class="text-xl text-white/80 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed"
+        class="text-lg sm:text-xl text-white/80 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed px-4"
       >
-        Discover amazing anime series and movies from around the world
+        {{ site.description }}
       </p>
     </div>
 
     <!-- Search Bar -->
-    <div class="max-w-2xl mx-auto relative">
+    <div class="max-w-2xl mx-auto relative px-4">
       <div class="relative">
         <input
           type="text"
           placeholder="Search for anime..."
-          class="w-full p-4 pl-12 text-white dark:text-gray-100 placeholder-white/60 dark:placeholder-gray-400 rounded-2xl search-input outline-none text-lg"
+          class="w-full p-3 sm:p-4 pl-10 sm:pl-12 text-white dark:text-gray-100 placeholder-white/60 dark:placeholder-gray-400 rounded-xl sm:rounded-2xl search-input outline-none text-base sm:text-lg"
           data-anime-target="searchInput"
           data-action="input->anime#search"
         />
@@ -51,39 +51,43 @@ layout: default
     </div>
 
     <!-- Filters and Sort Options -->
-    <div class="mt-6 flex flex-wrap justify-center gap-4">
-      <select
-        class="search-input px-4 py-2 rounded-xl text-white dark:text-gray-100"
-        data-action="change->anime#filterByType"
-      >
-        <option value="all">All Types</option>
-        <option value="tv">TV Series</option>
-        <option value="movie">Movies</option>
-        <option value="ova">OVA</option>
-      </select>
+    <div
+      class="mt-4 sm:mt-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4"
+    >
+      <div class="flex gap-2 sm:gap-4 w-full sm:w-auto">
+        <select
+          class="search-input px-3 py-2 sm:px-4 sm:py-2 rounded-xl text-white dark:text-gray-100 flex-1 sm:flex-none"
+          data-action="change->anime#filterByType"
+        >
+          <option value="all">All Types</option>
+          <option value="tv">TV Series</option>
+          <option value="movie">Movies</option>
+          <option value="ova">OVA</option>
+        </select>
 
-      <select
-        class="search-input px-4 py-2 rounded-xl text-white dark:text-gray-100"
-        data-action="change->anime#filterByGenre"
-      >
-        <option value="all">All Genres</option>
-        <option value="1">Action</option>
-        <option value="2">Adventure</option>
-        <option value="4">Comedy</option>
-        <!-- Add more genres -->
-      </select>
+        <select
+          class="search-input px-3 py-2 sm:px-4 sm:py-2 rounded-xl text-white dark:text-gray-100 flex-1 sm:flex-none"
+          data-action="change->anime#filterByGenre"
+        >
+          <option value="all">All Genres</option>
+          <option value="1">Action</option>
+          <option value="2">Adventure</option>
+          <option value="4">Comedy</option>
+          <!-- Add more genres -->
+        </select>
+      </div>
 
-      <div class="flex items-center gap-2">
-        <span class="text-white/80">Sort by:</span>
+      <div class="flex items-center gap-2 w-full sm:w-auto justify-center">
+        <span class="text-white/80 text-sm sm:text-base">Sort by:</span>
         <button
-          class="px-4 py-2 bg-white/20 text-white rounded-xl hover:bg-white/30 transition-all duration-300 backdrop-blur-sm"
+          class="px-3 py-2 sm:px-4 sm:py-2 bg-white/20 text-white rounded-xl hover:bg-white/30 transition-all duration-300 backdrop-blur-sm text-sm sm:text-base"
           data-action="click->anime#sortBy"
           data-sort="score"
         >
           Rating
         </button>
         <button
-          class="px-4 py-2 bg-white/20 text-white rounded-xl hover:bg-white/30 transition-all duration-300 backdrop-blur-sm"
+          class="px-3 py-2 sm:px-4 sm:py-2 bg-white/20 text-white rounded-xl hover:bg-white/30 transition-all duration-300 backdrop-blur-sm text-sm sm:text-base"
           data-action="click->anime#sortBy"
           data-sort="title"
         >
@@ -103,32 +107,31 @@ layout: default
 </div>
 
 <!-- Main Content -->
-<main class="max-w-7xl mx-auto px-6 pb-12">
+<main class="max-w-7xl mx-auto px-4 sm:px-6 pb-8 sm:pb-12">
   <!-- Popular Anime Section -->
-  <section class="mb-12">
-    <div class="flex items-center justify-between mb-8">
+  <section class="mb-8 sm:mb-12">
+    <div
+      class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 sm:mb-8 gap-4"
+    >
       <h2
-        class="text-3xl font-bold text-white dark:text-gray-100"
+        class="text-2xl sm:text-3xl font-bold text-white dark:text-gray-100"
         data-anime-target="sectionTitle"
       >
         Popular Anime
       </h2>
-      <div class="flex gap-4">
+      <div class="flex flex-wrap gap-2 sm:gap-4">
         <button
-          class="px-6 py-3 bg-white/20 text-white rounded-xl hover:bg-white/30 transition-all duration-300 backdrop-blur-sm"
-          data-action="click->anime#loadPopular"
+          class="px-4 py-2 sm:px-6 sm:py-3 bg-white/20 text-white rounded-xl hover:bg-white/30 transition-all duration-300 backdrop-blur-sm text-sm sm:text-base"
         >
           Popular
         </button>
         <button
-          class="px-6 py-3 bg-white/20 text-white rounded-xl hover:bg-white/30 transition-all duration-300 backdrop-blur-sm"
-          data-action="click->anime#loadTopRated"
+          class="px-4 py-2 sm:px-6 sm:py-3 bg-white/20 text-white rounded-xl hover:bg-white/30 transition-all duration-300 backdrop-blur-sm text-sm sm:text-base"
         >
           Top Rated
         </button>
         <button
-          class="px-6 py-3 bg-white/20 text-white rounded-xl hover:bg-white/30 transition-all duration-300 backdrop-blur-sm"
-          data-action="click->anime#loadUpcoming"
+          class="px-4 py-2 sm:px-6 sm:py-3 bg-white/20 text-white rounded-xl hover:bg-white/30 transition-all duration-300 backdrop-blur-sm text-sm sm:text-base"
         >
           Upcoming
         </button>
@@ -136,7 +139,7 @@ layout: default
     </div>
 
     <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
       data-anime-target="animeGrid"
     >
       <!-- Anime cards will be populated here -->
@@ -146,16 +149,16 @@ layout: default
 
 <!-- Anime Detail Modal -->
 <div
-  class="fixed inset-0 bg-black/70 dark:bg-black/80 backdrop-blur-sm z-50 hidden"
+  class="fixed inset-0 bg-black/70 dark:bg-black/80 backdrop-blur-sm z-50 hidden overflow-y-auto"
   data-anime-target="modal"
   data-action="click->anime#closeModal"
 >
-  <div class="flex items-center justify-center min-h-screen p-4">
+  <div class="flex items-start justify-center min-h-screen p-4">
     <div
-      class="glass-morphism rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+      class="glass-morphism rounded-2xl sm:rounded-3xl w-full max-w-4xl my-8"
       data-action="click->anime#stopPropagation"
     >
-      <div class="p-8" data-anime-target="modalContent">
+      <div class="p-4 sm:p-8" data-anime-target="modalContent">
         <!-- Modal content will be populated here -->
       </div>
     </div>
