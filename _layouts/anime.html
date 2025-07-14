@@ -133,7 +133,7 @@ layout: default
         <span
           class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent"
         >
-          AnimeList
+          xiAnimeList
         </span>
       </h1>
       <p class="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
@@ -168,6 +168,48 @@ layout: default
         </div>
       </div>
     </div>
+
+    <!-- Filters and Sort Options -->
+    <div class="mt-6 flex flex-wrap justify-center gap-4">
+      <select
+        class="search-input px-4 py-2 rounded-xl text-white"
+        data-action="change->anime#filterByType"
+      >
+        <option value="all">All Types</option>
+        <option value="tv">TV Series</option>
+        <option value="movie">Movies</option>
+        <option value="ova">OVA</option>
+      </select>
+
+      <select
+        class="search-input px-4 py-2 rounded-xl text-white"
+        data-action="change->anime#filterByGenre"
+      >
+        <option value="all">All Genres</option>
+        <option value="1">Action</option>
+        <option value="2">Adventure</option>
+        <option value="4">Comedy</option>
+        <!-- Add more genres -->
+      </select>
+
+      <div class="flex items-center gap-2">
+        <span class="text-white/80">Sort by:</span>
+        <button
+          class="px-4 py-2 bg-white/20 rounded-xl text-white hover:bg-white/30"
+          data-action="click->anime#sortBy"
+          data-sort="score"
+        >
+          Rating
+        </button>
+        <button
+          class="px-4 py-2 bg-white/20 rounded-xl text-white hover:bg-white/30"
+          data-action="click->anime#sortBy"
+          data-sort="title"
+        >
+          Title
+        </button>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -184,7 +226,12 @@ layout: default
   <!-- Popular Anime Section -->
   <section class="mb-12">
     <div class="flex items-center justify-between mb-8">
-      <h2 class="text-3xl font-bold text-white">Popular Anime</h2>
+      <h2
+        class="text-3xl font-bold text-white"
+        data-anime-target="sectionTitle"
+      >
+        Popular Anime
+      </h2>
       <div class="flex gap-4">
         <button
           class="px-6 py-3 bg-white/20 text-white rounded-xl hover:bg-white/30 transition-all duration-300 backdrop-blur-sm"
