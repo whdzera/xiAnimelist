@@ -70,7 +70,7 @@ var z=Object.defineProperty;var G=(r,e,t)=>e in r?z(r,e,{enumerable:!0,configura
       <div class="lg:w-2/3">
         <h2 class="text-4xl font-bold text-white mb-4">${e.title}</h2>
         <div class="flex items-center gap-4 mb-6">
-          <span class="bg-orange-500 text-black px-4 py-2 rounded-full font-bold">⭐ ${t}</span>
+          <span class="bg-yellow-700 text-white px-4 py-2 rounded-full font-bold">⭐ ${t}</span>
           <span class="status-badge px-4 py-2 rounded-full text-white ${this.getStatusColor(e.status)}">${e.status}</span>
         </div>
         
