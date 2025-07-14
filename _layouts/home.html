@@ -1,0 +1,212 @@
+---
+layout: default
+---
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+  * {
+    font-family: "Inter", sans-serif;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .anime-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .search-glow {
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+  }
+
+  .loading-spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .pulse-animation {
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .star-rating {
+    color: #fbbf24;
+    filter: drop-shadow(0 0 2px rgba(251, 191, 36, 0.5));
+  }
+
+  .genre-tag {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    transition: all 0.3s ease;
+  }
+
+  .genre-tag:hover {
+    background: linear-gradient(45deg, #764ba2, #667eea);
+    transform: scale(1.05);
+  }
+</style>
+
+<header class="gradient-bg py-6 px-4 shadow-2xl">
+  <div class="container mx-auto">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div
+          class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-purple-600 font-bold text-xl pulse-animation"
+        >
+          A
+        </div>
+        <h1 class="text-3xl font-bold text-shadow">AnimeFlix</h1>
+      </div>
+      <div class="text-sm opacity-90">Discover Amazing Anime</div>
+    </div>
+  </div>
+</header>
+
+<!-- Search Section -->
+<section class="py-8 px-4">
+  <div class="container mx-auto max-w-2xl">
+    <div class="relative">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Cari anime favoritmu..."
+        class="w-full px-6 py-4 bg-gray-800 border border-gray-600 rounded-full text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 search-glow transition-all duration-300"
+      />
+      <button
+        id="searchBtn"
+        class="absolute right-2 top-2 bg-purple-600 hover:bg-purple-700 px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105"
+      >
+        🔍 Cari
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Filter Section -->
+<section class="py-4 px-4">
+  <div class="container mx-auto">
+    <div class="flex flex-wrap gap-3 justify-center">
+      <button
+        class="filter-btn genre-tag px-4 py-2 rounded-full text-sm font-medium transition-all duration-300"
+        data-type="airing"
+      >
+        🔥 Sedang Tayang
+      </button>
+      <button
+        class="filter-btn genre-tag px-4 py-2 rounded-full text-sm font-medium transition-all duration-300"
+        data-type="upcoming"
+      >
+        ⭐ Akan Datang
+      </button>
+      <button
+        class="filter-btn genre-tag px-4 py-2 rounded-full text-sm font-medium transition-all duration-300"
+        data-type="bypopularity"
+      >
+        🏆 Terpopuler
+      </button>
+      <button
+        class="filter-btn genre-tag px-4 py-2 rounded-full text-sm font-medium transition-all duration-300"
+        data-type="favorite"
+      >
+        ❤️ Favorit
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Loading Spinner -->
+<div id="loadingSpinner" class="hidden flex justify-center items-center py-12">
+  <div
+    class="loading-spinner w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full"
+  ></div>
+</div>
+
+<!-- Anime Grid -->
+<main class="py-8 px-4">
+  <div class="container mx-auto">
+    <div
+      id="animeGrid"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+    >
+      <!-- Anime cards will be inserted here -->
+    </div>
+  </div>
+</main>
+
+<!-- Load More Button -->
+<div class="text-center py-8">
+  <button
+    id="loadMoreBtn"
+    class="hidden bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+  >
+    Load More Anime
+  </button>
+</div>
+
+<!-- Modal -->
+<div
+  id="animeModal"
+  class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
+>
+  <div
+    class="glass-effect rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+  >
+    <div id="modalContent" class="p-6">
+      <!-- Modal content will be inserted here -->
+    </div>
+  </div>
+</div>
