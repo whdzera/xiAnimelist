@@ -128,45 +128,20 @@ export default class AnimeController extends Controller {
     const year = anime.year || "TBA";
 
     card.innerHTML = `
-                    <div class="relative">
-                        <img src="${anime.images.jpg.large_image_url}" alt="${
-      anime.title
-    }" class="w-full h-80 object-cover">
-                        <div class="absolute top-4 left-4">
-                            <span class="status-badge px-3 py-1 rounded-full text-xs font-semibold text-white ${statusColor}">
-                                ${anime.status}
-                            </span>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold">
-                                ⭐ ${rating}
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-white font-bold text-lg mb-2 line-clamp-2">${
-                          anime.title
-                        }</h3>
-                        <p class="text-white/70 text-sm mb-4 line-clamp-3">${
-                          anime.synopsis || "No synopsis available"
-                        }</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-white/60 text-sm">${year}</span>
-                            <span class="text-white/60 text-sm">${
-                              anime.episodes || "?"
-                            } episodes</span>
-                        </div>
-                        <div class="flex flex-wrap gap-2 mt-4">
-                            ${anime.genres
-                              .slice(0, 2)
-                              .map(
-                                (genre) =>
-                                  `<span class="genre-tag px-2 py-1 text-xs text-white rounded-full">${genre.name}</span>`
-                              )
-                              .join("")}
-                        </div>
-                    </div>
-                `;
+    <div class="relative h-full">
+      <img src="${anime.images.jpg.large_image_url}" 
+           alt="${anime.title}"
+           class="w-full h-[300px] object-cover rounded-t-2xl" 
+           loading="lazy">
+      <div class="p-4">
+        <h3 class="text-lg font-semibold text-white dark:text-gray-100 mb-2">${anime.title}</h3>
+        <div class="flex items-center justify-between">
+          <span class="text-yellow-400 dark:text-yellow-500">⭐ ${rating}</span>
+          <span class="text-white/60 dark:text-gray-400">${year}</span>
+        </div>
+      </div>
+    </div>
+  `;
 
     return card;
   }
