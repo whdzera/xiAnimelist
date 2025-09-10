@@ -3,7 +3,15 @@ description: >-
   Discover and track your favorite anime series and movies.
 baseurl: "/xiAnimelist"
 url: ""
-github_username:  whdzera
+github_username: whdzera
 
 include:
   - app
+
+exclude:
+  - spec
+  - package.json
+  - package-lock.json
+  - README.md
+  - Rakefile
+  - vite.config.js

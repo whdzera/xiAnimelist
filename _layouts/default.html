@@ -69,6 +69,15 @@
 
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {{ content }}
+      <footer class="text-gray-800 dark:text-gray-200 py-6 mt-12 text-center">
+        <p class="text-sm">
+          &copy;{{ site.time | date: '%Y' }} {{ site.title }}. All rights
+          reserved.
+        </p>
+        <p class="text-sm">
+          <a href="https://github.com/whdzera/xiAnimelist">github</a>
+        </p>
+      </footer>
     </main>
   </body>
 </html>
